@@ -1,0 +1,44 @@
+{
+    "name": "SphereInput",
+    "maps": [
+        {
+            "name": "Sphere",
+            "id": "66d3612f-3ef3-4a8b-be0e-0b1f200485b6",
+            "actions": [
+                {
+                    "name": "Rotate",
+                    "type": "Value",
+                    "id": "5fe8d1c3-b7fc-4646-8c4b-e1b4b59f9227",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "03cc72f4-9d0b-4783-8b12-58d4a97cadb0",
+                    "path": "<Mouse>/delta/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "17b8b947-8bc1-4c2f-a91d-e45ce9b24add",
+                    "path": "<Touchscreen>/delta/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
