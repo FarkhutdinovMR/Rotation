@@ -1,12 +1,15 @@
-using UnityEngine;
 using Models;
-using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
     [SerializeField] private Init _init;
     [SerializeField] private float _delayAfterWin;
+    [SerializeField] private GameObject _congratulationWindow;
+    [SerializeField] private Button _nextLevelButton;
 
     private Transformable _transformable;
     private Coroutine _coroutine;
@@ -15,6 +18,7 @@ public class Level : MonoBehaviour
     {
         _transformable = _init.Model;
         _transformable.Ended += OnEnded;
+        _nextLevelButton.onClick.AddListener(NextLevel);
     }
 
     private void OnDisable()
@@ -27,13 +31,18 @@ public class Level : MonoBehaviour
         if (_coroutine != null)
             return;
 
-        _coroutine = StartCoroutine(RestartLevel());
+        _coroutine = StartCoroutine(AddDelay());
     }
 
-    private IEnumerator RestartLevel()
+    private IEnumerator AddDelay()
     {
         yield return new WaitForSeconds(_delayAfterWin);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _congratulationWindow.SetActive(true);
         _coroutine = null;
+    }
+
+    private void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

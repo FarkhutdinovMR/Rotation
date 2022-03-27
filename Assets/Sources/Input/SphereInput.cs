@@ -25,6 +25,14 @@ public class @SphereInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Grab"",
+                    ""type"": ""Button"",
+                    ""id"": ""35c007f0-77c0-47dc-b5ff-a302bad3aed7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -49,6 +57,28 @@ public class @SphereInput : IInputActionCollection, IDisposable
                     ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8fd3667c-368a-4da4-af49-2a85458ffa0b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""559e082f-e9ce-4312-bfe4-74a6690846e1"",
+                    ""path"": ""<Touchscreen>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Grab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -58,6 +88,7 @@ public class @SphereInput : IInputActionCollection, IDisposable
         // Sphere
         m_Sphere = asset.FindActionMap("Sphere", throwIfNotFound: true);
         m_Sphere_Rotate = m_Sphere.FindAction("Rotate", throwIfNotFound: true);
+        m_Sphere_Grab = m_Sphere.FindAction("Grab", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -108,11 +139,13 @@ public class @SphereInput : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Sphere;
     private ISphereActions m_SphereActionsCallbackInterface;
     private readonly InputAction m_Sphere_Rotate;
+    private readonly InputAction m_Sphere_Grab;
     public struct SphereActions
     {
         private @SphereInput m_Wrapper;
         public SphereActions(@SphereInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Rotate => m_Wrapper.m_Sphere_Rotate;
+        public InputAction @Grab => m_Wrapper.m_Sphere_Grab;
         public InputActionMap Get() { return m_Wrapper.m_Sphere; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -125,6 +158,9 @@ public class @SphereInput : IInputActionCollection, IDisposable
                 @Rotate.started -= m_Wrapper.m_SphereActionsCallbackInterface.OnRotate;
                 @Rotate.performed -= m_Wrapper.m_SphereActionsCallbackInterface.OnRotate;
                 @Rotate.canceled -= m_Wrapper.m_SphereActionsCallbackInterface.OnRotate;
+                @Grab.started -= m_Wrapper.m_SphereActionsCallbackInterface.OnGrab;
+                @Grab.performed -= m_Wrapper.m_SphereActionsCallbackInterface.OnGrab;
+                @Grab.canceled -= m_Wrapper.m_SphereActionsCallbackInterface.OnGrab;
             }
             m_Wrapper.m_SphereActionsCallbackInterface = instance;
             if (instance != null)
@@ -132,6 +168,9 @@ public class @SphereInput : IInputActionCollection, IDisposable
                 @Rotate.started += instance.OnRotate;
                 @Rotate.performed += instance.OnRotate;
                 @Rotate.canceled += instance.OnRotate;
+                @Grab.started += instance.OnGrab;
+                @Grab.performed += instance.OnGrab;
+                @Grab.canceled += instance.OnGrab;
             }
         }
     }
@@ -139,5 +178,6 @@ public class @SphereInput : IInputActionCollection, IDisposable
     public interface ISphereActions
     {
         void OnRotate(InputAction.CallbackContext context);
+        void OnGrab(InputAction.CallbackContext context);
     }
 }

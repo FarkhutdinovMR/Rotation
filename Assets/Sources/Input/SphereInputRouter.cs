@@ -1,40 +1,49 @@
-using UnityEngine.InputSystem;
-using Models;
 using System;
+using Models;
+using UnityEngine.InputSystem;
 
 public class SphereInputRouter
 {
     private readonly SphereInput _input;
     private readonly IRotation _rotation;
+    private readonly Inertia _inertia;
 
-    public SphereInputRouter(IRotation rotation)
+    public SphereInputRouter(IRotation rotation, Inertia inertia)
     {
         if (rotation == null)
             throw new ArgumentNullException(nameof(rotation));
 
         _rotation = rotation;
+        _inertia = inertia;
         _input = new SphereInput();
     }
 
     public void OnEnable()
     {
         _input.Enable();
-        _input.Sphere.Rotate.started += OnRotate;
     }
 
     public void OnDisable()
     {
         _input.Disable();
-        _input.Sphere.Rotate.started -= OnRotate;
     }
 
-    private void OnRotate(InputAction.CallbackContext context)
+    public void Update()
     {
-        Rotate(context.ReadValue<float>());
+        if (GrabStarted())
+        {
+            float direction = _input.Sphere.Rotate.ReadValue<float>();
+            _rotation.Rotate(direction);
+            _inertia.Update(direction);
+        }
+        else
+        {
+            _inertia.Rotate();
+        }
     }
 
-    private void Rotate(float direction)
+    private bool GrabStarted()
     {
-        _rotation.Rotate(direction);
+        return _input.Sphere.Grab.phase == InputActionPhase.Started;
     }
 }
