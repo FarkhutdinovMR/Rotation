@@ -14,7 +14,7 @@ namespace Models
 
         public event Action<float, float> Transformated;
 
-        public event Action Ended;
+        public event Action<float> Ended;
 
         public Transformable(Range rotationRange, Range positionRange)
         {
@@ -22,17 +22,18 @@ namespace Models
             _positionRange = positionRange;
         }
 
-        public void Rotate(float direction)
+        public void Rotate(float angle)
         {
             if (_isEnd)
                 return;
 
-            _rotation = Mathf.Clamp(_rotation + direction, _rotationRange.Min, _rotationRange.Max);
+            _rotation += angle;
+            _rotation = Mathf.Clamp(_rotation, _rotationRange.Min, _rotationRange.Max);
 
             if (_rotation >= _rotationRange.Max)
             {
                 _isEnd = true;
-                Ended?.Invoke();
+                Ended?.Invoke(angle);
             }
 
             Translate();

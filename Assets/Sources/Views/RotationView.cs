@@ -20,10 +20,11 @@ public class RotationView : MonoBehaviour
         _rigidbody.isKinematic = true;
     }
 
-    public void EnablePhysics()
+    public void EnablePhysics(float direction)
     {
         _rigidbody.useGravity = true;
         _rigidbody.isKinematic = false;
         _rigidbody.AddForce(Vector3.right, ForceMode.Impulse);
+        _rigidbody.AddTorque(Vector3.down * direction * 20);
     }
 }

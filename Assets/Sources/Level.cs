@@ -22,7 +22,7 @@ public class Level : MonoBehaviour
         _transformable.Ended -= OnEnded;
     }
 
-    private void OnEnded()
+    private void OnEnded(float angle)
     {
         if (_coroutine != null)
             return;

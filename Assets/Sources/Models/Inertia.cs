@@ -32,7 +32,7 @@ namespace Models
             if (_isChanged == false)
                 Slowdown();
 
-            _rotation.Rotate(_acceleration);
+            _rotation.Rotate(_acceleration * Time.deltaTime);
             _isChanged = false;
             AccelerationChanged?.Invoke(_acceleration);
         }
