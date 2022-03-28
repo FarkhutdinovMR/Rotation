@@ -5,32 +5,28 @@ using Presenter;
 public class Init : MonoBehaviour
 {
     [SerializeField] private float _endPosition;
-    [SerializeField] private float _inertiaMaxSpeed;
-    [SerializeField] private float _inertiaUnitPerSecond;
+    [SerializeField] private float _rotateSpeed;
+    [SerializeField] private float _rotateMaxSpeed;
     [SerializeField] private float _inertiaSlowdown;
     [SerializeField] private float _gravityScale;
-    [SerializeField] private float _rotaterSpeed;
     [SerializeField] private RotationView _view;
 
-    private SphereInputRouter _input;
+    private NutInputRouter _input;
     private Transformable _model;
     private TransformablePresenter _presenter;
-    private Inertia _inertia;
-    private Gravity _gravity;
-    private Rotater _rotater;
+    private InertRotation _inertRotation;
 
     public Transformable Model => _model;
 
-    public Inertia Inertia => _inertia;
+    public NutInputRouter Input => _input;
+
+    public InertRotation InertRotation => _inertRotation;
 
     private void Awake()
     {
         _model = new Transformable(new Range(0, 360 * _endPosition), new Range(0, _endPosition));
-        _rotater = new Rotater(_model, _rotaterSpeed);
-        //_gravity = new Gravity(_model, _gravityScale);
-        _inertia = new Inertia(_model, _inertiaMaxSpeed, _inertiaUnitPerSecond, _inertiaSlowdown);
-
-        _input = new SphereInputRouter(_rotater, _inertia);
+        _inertRotation = new InertRotation(_rotateSpeed, _inertiaSlowdown, _rotateMaxSpeed);
+        _input = new NutInputRouter(_inertRotation, _model);
         _presenter = new TransformablePresenter(_model, _view);
     }
 
@@ -48,7 +44,6 @@ public class Init : MonoBehaviour
 
     private void Update()
     {
-        //_gravity.Update(Time.deltaTime);
         _input.Update();
     }
 }

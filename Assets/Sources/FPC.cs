@@ -12,6 +12,7 @@ public class FPC : MonoBehaviour
 
     private void OnUpdate()
     {
-        _text.SetText(((int)(1 / Time.unscaledDeltaTime)).ToString());
+        int fpc = (int)(1 / Time.unscaledDeltaTime);
+        _text.SetText($"FPC {fpc}");
     }
 }

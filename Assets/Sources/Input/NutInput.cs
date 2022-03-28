@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Sources/Input/SphereInput.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Sources/Input/NutInput.inputactions'
 
 using System;
 using System.Collections;
@@ -6,16 +6,16 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @SphereInput : IInputActionCollection, IDisposable
+public class @NutInput : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @SphereInput()
+    public @NutInput()
     {
         asset = InputActionAsset.FromJson(@"{
-    ""name"": ""SphereInput"",
+    ""name"": ""NutInput"",
     ""maps"": [
         {
-            ""name"": ""Sphere"",
+            ""name"": ""Nut"",
             ""id"": ""66d3612f-3ef3-4a8b-be0e-0b1f200485b6"",
             ""actions"": [
                 {
@@ -85,10 +85,10 @@ public class @SphereInput : IInputActionCollection, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // Sphere
-        m_Sphere = asset.FindActionMap("Sphere", throwIfNotFound: true);
-        m_Sphere_Rotate = m_Sphere.FindAction("Rotate", throwIfNotFound: true);
-        m_Sphere_Grab = m_Sphere.FindAction("Grab", throwIfNotFound: true);
+        // Nut
+        m_Nut = asset.FindActionMap("Nut", throwIfNotFound: true);
+        m_Nut_Rotate = m_Nut.FindAction("Rotate", throwIfNotFound: true);
+        m_Nut_Grab = m_Nut.FindAction("Grab", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -135,34 +135,34 @@ public class @SphereInput : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Sphere
-    private readonly InputActionMap m_Sphere;
-    private ISphereActions m_SphereActionsCallbackInterface;
-    private readonly InputAction m_Sphere_Rotate;
-    private readonly InputAction m_Sphere_Grab;
-    public struct SphereActions
+    // Nut
+    private readonly InputActionMap m_Nut;
+    private INutActions m_NutActionsCallbackInterface;
+    private readonly InputAction m_Nut_Rotate;
+    private readonly InputAction m_Nut_Grab;
+    public struct NutActions
     {
-        private @SphereInput m_Wrapper;
-        public SphereActions(@SphereInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Rotate => m_Wrapper.m_Sphere_Rotate;
-        public InputAction @Grab => m_Wrapper.m_Sphere_Grab;
-        public InputActionMap Get() { return m_Wrapper.m_Sphere; }
+        private @NutInput m_Wrapper;
+        public NutActions(@NutInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Rotate => m_Wrapper.m_Nut_Rotate;
+        public InputAction @Grab => m_Wrapper.m_Nut_Grab;
+        public InputActionMap Get() { return m_Wrapper.m_Nut; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(SphereActions set) { return set.Get(); }
-        public void SetCallbacks(ISphereActions instance)
+        public static implicit operator InputActionMap(NutActions set) { return set.Get(); }
+        public void SetCallbacks(INutActions instance)
         {
-            if (m_Wrapper.m_SphereActionsCallbackInterface != null)
+            if (m_Wrapper.m_NutActionsCallbackInterface != null)
             {
-                @Rotate.started -= m_Wrapper.m_SphereActionsCallbackInterface.OnRotate;
-                @Rotate.performed -= m_Wrapper.m_SphereActionsCallbackInterface.OnRotate;
-                @Rotate.canceled -= m_Wrapper.m_SphereActionsCallbackInterface.OnRotate;
-                @Grab.started -= m_Wrapper.m_SphereActionsCallbackInterface.OnGrab;
-                @Grab.performed -= m_Wrapper.m_SphereActionsCallbackInterface.OnGrab;
-                @Grab.canceled -= m_Wrapper.m_SphereActionsCallbackInterface.OnGrab;
+                @Rotate.started -= m_Wrapper.m_NutActionsCallbackInterface.OnRotate;
+                @Rotate.performed -= m_Wrapper.m_NutActionsCallbackInterface.OnRotate;
+                @Rotate.canceled -= m_Wrapper.m_NutActionsCallbackInterface.OnRotate;
+                @Grab.started -= m_Wrapper.m_NutActionsCallbackInterface.OnGrab;
+                @Grab.performed -= m_Wrapper.m_NutActionsCallbackInterface.OnGrab;
+                @Grab.canceled -= m_Wrapper.m_NutActionsCallbackInterface.OnGrab;
             }
-            m_Wrapper.m_SphereActionsCallbackInterface = instance;
+            m_Wrapper.m_NutActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Rotate.started += instance.OnRotate;
@@ -174,8 +174,8 @@ public class @SphereInput : IInputActionCollection, IDisposable
             }
         }
     }
-    public SphereActions @Sphere => new SphereActions(this);
-    public interface ISphereActions
+    public NutActions @Nut => new NutActions(this);
+    public interface INutActions
     {
         void OnRotate(InputAction.CallbackContext context);
         void OnGrab(InputAction.CallbackContext context);
