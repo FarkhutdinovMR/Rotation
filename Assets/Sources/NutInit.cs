@@ -2,7 +2,7 @@ using UnityEngine;
 using Models;
 using Presenter;
 
-public class Init : MonoBehaviour
+public class NutInit : MonoBehaviour
 {
     [SerializeField] private float _endPosition;
     [SerializeField] private float _rotateSpeed;

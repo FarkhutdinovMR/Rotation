@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class LogInit : MonoBehaviour
 {
-    [SerializeField] private Init _init;
+    [SerializeField] private NutInit _init;
     [SerializeField] private TextView _inertiaView;
     [SerializeField] private TextView _deltaView;
 

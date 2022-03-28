@@ -11,7 +11,10 @@ public class RotationView : MonoBehaviour
 
     public void Rotate(float rotation, float position)
     {
-        transform.SetPositionAndRotation(new Vector3(transform.position.x, position, transform.position.z), Quaternion.Euler(new Vector3(0, -rotation, 0)));
+        var _position = new Vector3(transform.position.x, position, transform.position.z);
+        var _rotation = Quaternion.Euler(new Vector3(0, -rotation, 0));
+
+        transform.SetPositionAndRotation(_position, _rotation);
     }
 
     private void DisablePhysics()

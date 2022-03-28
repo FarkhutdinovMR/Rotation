@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] private Init _init;
+    [SerializeField] private NutInit _init;
     [SerializeField] private float _delayAfterWin;
     [SerializeField] private GameObject _congratulationWindow;
     [SerializeField] private Button _nextLevelButton;
