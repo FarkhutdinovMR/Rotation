@@ -12,15 +12,17 @@ namespace Models
         private float _position;
         private bool _isEnd;
 
-        public event Action<float, float> Transformated;
-
-        public event Action<float> Ended;
-
         public Transformable(Range rotationRange, Range positionRange)
         {
             _rotationRange = rotationRange;
             _positionRange = positionRange;
         }
+
+        public event Action<float, float> Transformated;
+
+        public event Action<float> Ended;
+
+        public float Position => _position;
 
         public void Rotate(float angle)
         {

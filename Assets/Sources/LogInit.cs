@@ -8,14 +8,17 @@ public class LogInit : MonoBehaviour
 
     private void OnEnable()
     {
-        _init.InertRotation.AccelerationChanged += OnAccelerationChanged;
         _init.Input.DeltaChanged += OnDeltaChanged;
     }
 
     private void OnDisable()
     {
-        _init.InertRotation.AccelerationChanged -= OnAccelerationChanged;
         _init.Input.DeltaChanged -= OnDeltaChanged;
+    }
+
+    private void Update()
+    {
+        _inertiaView.UpdateText(_init.InertRotation.Acceleration);
     }
 
     private void OnAccelerationChanged(float value)
