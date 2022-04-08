@@ -16,3 +16,4 @@ MonoBehaviour:
   <RotateScale>k__BackingField: 0.1
   <MovePerRotate>k__BackingField: 0.003
   <JumpScale>k__BackingField: 1
+  <Damage>k__BackingField: 5
