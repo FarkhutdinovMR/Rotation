@@ -4,7 +4,7 @@ namespace Models
 {
     public class InertRotation
     {
-        private readonly float _rotateMaxSpeed;
+        private readonly NutSettings _nutSettings;
         private const float StopSpeed = 0;
 
         private float _acceleration;
@@ -12,15 +12,15 @@ namespace Models
 
         public float Acceleration => _acceleration;
 
-        public InertRotation(float rotateMaxSpeed)
+        public InertRotation(NutSettings nutSettings)
         {
-            _rotateMaxSpeed = rotateMaxSpeed;
+            _nutSettings = nutSettings;
         }
 
         public void Accelerate(float delta)
         {
             _acceleration += delta * _direction;
-            _acceleration = Mathf.Clamp(_acceleration, -_rotateMaxSpeed, _rotateMaxSpeed);
+            _acceleration = Mathf.Clamp(_acceleration, -_nutSettings.MaxAngularSpeed, _nutSettings.MaxAngularSpeed);
         }
 
         public void Slowdown(float maxDelta)

@@ -16,14 +16,12 @@ public class Level : MonoBehaviour
 
     private void OnEnable()
     {
-        _transformable = _init.Model;
-        _transformable.Ended += OnEnded;
+        _transformable = _init.Transformable;
         _nextLevelButton.onClick.AddListener(NextLevel);
     }
 
     private void OnDisable()
     {
-        _transformable.Ended -= OnEnded;
     }
 
     private void OnEnded(float angle)

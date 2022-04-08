@@ -20,16 +20,9 @@ namespace Presenter
             _view = rotationView;
         }
 
-        public void OnEnable()
+        public void Update()
         {
-            _model.Transformated += _view.Rotate;
-            _model.Ended += _view.EnablePhysics;
-        }
-
-        public void OnDisable()
-        {
-            _model.Transformated -= _view.Rotate;
-            _model.Ended -= _view.EnablePhysics;
+            _view.Rotate(_model.Rotation, _model.Position);
         }
     }
 }

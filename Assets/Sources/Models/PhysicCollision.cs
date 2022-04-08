@@ -17,7 +17,11 @@ namespace Models
 
         public void OnDrawGizmo()
         {
-            Gizmos.color = Color.green;
+            if (IsCollisionEnter(out Collider[] colliders))
+                Gizmos.color = Color.red;
+            else
+                Gizmos.color = Color.green;
+
             Gizmos.DrawWireCube(_colliderPosition, _colliderSize * 2);
         }
 
