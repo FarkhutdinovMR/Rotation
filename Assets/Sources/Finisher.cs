@@ -1,30 +1,33 @@
-using Models;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Level : MonoBehaviour
+public class Finisher : MonoBehaviour
 {
-    [SerializeField] private NutInit _init;
     [SerializeField] private float _delayAfterWin;
     [SerializeField] private GameObject _congratulationWindow;
     [SerializeField] private Button _nextLevelButton;
 
-    private Transformable _transformable;
     private Coroutine _coroutine;
 
     private void OnEnable()
     {
-        _transformable = _init.Transformable;
         _nextLevelButton.onClick.AddListener(NextLevel);
     }
 
     private void OnDisable()
     {
+        _nextLevelButton.onClick.RemoveListener(NextLevel);
     }
 
-    private void OnEnded(float angle)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Finish finish))
+            OnFinishEntered();
+    }
+
+    private void OnFinishEntered()
     {
         if (_coroutine != null)
             return;
@@ -35,6 +38,7 @@ public class Level : MonoBehaviour
     private IEnumerator AddDelay()
     {
         yield return new WaitForSeconds(_delayAfterWin);
+        Time.timeScale = 0;
         _congratulationWindow.SetActive(true);
         _coroutine = null;
     }
@@ -42,5 +46,6 @@ public class Level : MonoBehaviour
     private void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 }

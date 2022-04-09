@@ -7,6 +7,8 @@ public class Health : MonoBehaviour
 
     private float _value;
 
+    public event Action Changed;
+
     public float Value => _value;
 
     public float MaxHealth => _maxHealth;
@@ -25,6 +27,8 @@ public class Health : MonoBehaviour
 
         if (_value < 0)
             _value = 0;
+
+        Changed?.Invoke();
 
         if (_value == 0)
             Die();

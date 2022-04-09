@@ -6,11 +6,11 @@ namespace Influences
     {
         [SerializeField] private float _gravity;
         [SerializeField] private NutInit _nut;
-        [SerializeField] private Movement _movement;
+        [SerializeField] private BoltCast _boltCast;
 
         private void OnTriggerStay(Collider other)
         {
-            if (_movement.InAir)
+            if (_boltCast.InAir)
                 _nut.InertRotation.Accelerate(_gravity);
         }
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6908103984862898318}
   - component: {fileID: 4228662129526137025}
   - component: {fileID: 543207277}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,12 +92,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4962544066057800027}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.30717036
-  m_Height: 3.0572793
+  m_Height: 2.932193
   m_Direction: 1
-  m_Center: {x: -0.000037550926, y: 1.5286397, z: 0}
+  m_Center: {x: -0.000037550926, y: 1.5403665, z: 0}
 --- !u!114 &543207277
 MonoBehaviour:
   m_ObjectHideFlags: 0
