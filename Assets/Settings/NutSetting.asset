@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: NutSetting
   m_EditorClassIdentifier: 
   <MaxAngularSpeed>k__BackingField: 500
-  <RotateScale>k__BackingField: 20
+  <RotateScale>k__BackingField: 10
   <MovePerRotate>k__BackingField: 0.003
   <Damage>k__BackingField: 1

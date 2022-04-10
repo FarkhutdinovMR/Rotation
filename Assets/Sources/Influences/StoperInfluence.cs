@@ -4,7 +4,7 @@ public class StoperInfluence : MonoBehaviour
 {
     [SerializeField] private NutInit _nut;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         _nut.InertRotation.Stop();
     }

@@ -18,10 +18,10 @@ MonoBehaviour:
     value: 1
   focusDistance:
     overrideState: 1
-    value: 3.65
+    value: 3.5
   aperture:
     overrideState: 1
-    value: 14.4
+    value: 20
   focalLength:
     overrideState: 1
     value: 270
@@ -40,13 +40,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
   m_Name: Bloom
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enabled:
     overrideState: 1
     value: 1
   intensity:
     overrideState: 1
-    value: 6
+    value: 2
   threshold:
     overrideState: 0
     value: 1
@@ -184,7 +184,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.1
+    value: 0.15
   size:
     overrideState: 0
     value: 1
