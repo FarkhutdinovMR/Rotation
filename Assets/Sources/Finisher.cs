@@ -1,15 +1,16 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Finisher : MonoBehaviour
 {
-    [SerializeField] private float _delayAfterWin;
     [SerializeField] private GameObject _congratulationWindow;
     [SerializeField] private Button _nextLevelButton;
+    [SerializeField] private NutInit _nut;
+    [SerializeField] private NutSettings _nutSettings;
+    [SerializeField] private Follower _camera;
+    [SerializeField] private GameObject[] _levels;
 
-    private Coroutine _coroutine;
+    private int _currentLevel;
 
     private void OnEnable()
     {
@@ -29,23 +30,29 @@ public class Finisher : MonoBehaviour
 
     private void OnFinishEntered()
     {
-        if (_coroutine != null)
-            return;
-
-        _coroutine = StartCoroutine(AddDelay());
-    }
-
-    private IEnumerator AddDelay()
-    {
-        yield return new WaitForSeconds(_delayAfterWin);
-        Time.timeScale = 0;
         _congratulationWindow.SetActive(true);
-        _coroutine = null;
+        Time.timeScale = 0;
     }
 
     private void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        _levels[_currentLevel].SetActive(false);
+
+        int nextLevel = _currentLevel + 1;
+
+        if (nextLevel >= _levels.Length)
+            return;
+
+        _levels[nextLevel].SetActive(true);
+
+        _nut.Transformable.Rotate(transform.position.y / _nutSettings.MovePerRotate * -1);
+
+        _camera.Reset();
+
+        _congratulationWindow.SetActive(false);
+
         Time.timeScale = 1;
+
+        _currentLevel = nextLevel;
     }
 }

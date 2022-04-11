@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 5148998459289792259}
   - component: {fileID: 5148998459289792258}
   - component: {fileID: 5148998459289792263}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MiddleGearBarrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3442fa38125984cb8854b1a0acd744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1000
+  _maxHealth: 1500
 --- !u!114 &5148998459289792259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +224,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6645233674997552873, guid: a4999502f675f7546bb1925d9370f9fc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -5633506002534656242, guid: a4999502f675f7546bb1925d9370f9fc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4782028270542551503, guid: a4999502f675f7546bb1925d9370f9fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -240,6 +248,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: b8d53ec64cd3e0044af9529d13ae3326, type: 2}
+    - target: {fileID: -1646722587848141511, guid: a4999502f675f7546bb1925d9370f9fc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 673912435501540691, guid: a4999502f675f7546bb1925d9370f9fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -252,6 +264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShateredMiddleGear
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a4999502f675f7546bb1925d9370f9fc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1058494197452523858, guid: a4999502f675f7546bb1925d9370f9fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -260,6 +276,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: b8d53ec64cd3e0044af9529d13ae3326, type: 2}
+    - target: {fileID: 5300726339978364073, guid: a4999502f675f7546bb1925d9370f9fc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4999502f675f7546bb1925d9370f9fc, type: 3}
 --- !u!4 &4683272661611582984 stripped

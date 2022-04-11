@@ -4,12 +4,21 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] private NutSettings _nutSettings;
     [SerializeField] private NutInit _nut;
-    [SerializeField] private BoltCast _boltCast;
+    [SerializeField] private Caster _bolt;
+    [SerializeField] private Caster _barrier;
 
     private void Update()
     {
-        if (_boltCast.InAir == false)
-            _nut.Input.Update();
+        if (_barrier.IsCollision)
+        {
+            _nut.InertRotation.Stop();
+            _nut.InertRotation.Accelerate(_barrier.ComputePenetration() / _nutSettings.MovePerRotate * _barrier.Direction());
+        }
+        else
+        {
+            if (_bolt.IsCollision)
+                _nut.Input.Update();
+        }
 
         _nut.Transformable.Rotate(_nut.InertRotation.Acceleration * Time.deltaTime);
         _nut.Presenter.Update();

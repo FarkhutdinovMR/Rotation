@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2471d883e712f5d458e868669f38dbbd, type: 3}
   m_Name: NutSetting
   m_EditorClassIdentifier: 
-  <MaxAngularSpeed>k__BackingField: 500
-  <RotateScale>k__BackingField: 10
+  <MaxAngularSpeed>k__BackingField: 700
+  <RotateScale>k__BackingField: 8
   <MovePerRotate>k__BackingField: 0.003
   <Damage>k__BackingField: 1
+  <Friction>k__BackingField: 5
+  <Gravity>k__BackingField: -4
+  <Wind>k__BackingField: 10

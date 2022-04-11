@@ -10,4 +10,10 @@ public class NutSettings : ScriptableObject
     [field: SerializeField] public float MovePerRotate { get; private set; }
 
     [field: SerializeField] public int Damage { get; private set; }
+
+    [field: SerializeField] public float Friction { get; private set; }
+
+    [field: SerializeField] public float Gravity { get; private set; }
+
+    [field: SerializeField] public float Wind { get; private set; }
 }

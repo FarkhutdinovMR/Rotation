@@ -3,13 +3,22 @@ using UnityEngine;
 public class Follower : MonoBehaviour
 {
     [SerializeField] private Transform _target;
-    [SerializeField] private Vector3 _offset;
-    [SerializeField] private float _speed;
-    [SerializeField] private NutInit _nut;
+    [SerializeField] private float _yOffset;
+
+    private Vector3 startPosition;
+
+    private void Start()
+    {
+        startPosition = transform.position;
+    }
 
     private void LateUpdate()
     {
-        Vector3 position = _target.position + _offset;
-        transform.position = Vector3.MoveTowards(transform.position, position, Mathf.Abs(_nut.InertRotation.Acceleration) * _speed);
+        transform.position = new Vector3(transform.position.x, Mathf.Max(transform.position.y, _target.position.y + _yOffset), transform.position.z);
+    }
+
+    public void Reset()
+    {
+        transform.position = startPosition;
     }
 }

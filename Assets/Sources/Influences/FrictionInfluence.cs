@@ -4,12 +4,14 @@ namespace Influences
 {
     public class FrictionInfluence : MonoBehaviour
     {
-        [SerializeField] private float _valueInPercent;
+        [SerializeField] private NutSettings _nutSettings;
         [SerializeField] private NutInit _nut;
+        [SerializeField] private Caster _boltCast;
 
         private void OnTriggerStay(Collider other)
         {
-            _nut.InertRotation.Slowdown(_valueInPercent);
+            if (_boltCast.IsCollision)
+                _nut.InertRotation.Slowdown(_nutSettings.Friction);
         }
     }
 }

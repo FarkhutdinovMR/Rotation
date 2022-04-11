@@ -4,14 +4,14 @@ namespace Influences
 {
     public class GravityInfluence : MonoBehaviour
     {
-        [SerializeField] private float _gravity;
+        [SerializeField] private NutSettings _nutSettings;
         [SerializeField] private NutInit _nut;
-        [SerializeField] private BoltCast _boltCast;
+        [SerializeField] private Caster _boltCast;
 
         private void OnTriggerStay(Collider other)
         {
-            if (_boltCast.InAir)
-                _nut.InertRotation.Accelerate(_gravity);
+            if (_boltCast.IsCollision == false)
+                _nut.InertRotation.Accelerate(_nutSettings.Gravity);
         }
     }
 }
