@@ -5,12 +5,7 @@ public class Finisher : MonoBehaviour
 {
     [SerializeField] private GameObject _congratulationWindow;
     [SerializeField] private Button _nextLevelButton;
-    [SerializeField] private NutInit _nut;
-    [SerializeField] private NutSettings _nutSettings;
-    [SerializeField] private Follower _camera;
-    [SerializeField] private GameObject[] _levels;
-
-    private int _currentLevel;
+    [SerializeField] private Levels _level;
 
     private void OnEnable()
     {
@@ -36,23 +31,7 @@ public class Finisher : MonoBehaviour
 
     private void NextLevel()
     {
-        _levels[_currentLevel].SetActive(false);
-
-        int nextLevel = _currentLevel + 1;
-
-        if (nextLevel >= _levels.Length)
-            return;
-
-        _levels[nextLevel].SetActive(true);
-
-        _nut.Transformable.Rotate(transform.position.y / _nutSettings.MovePerRotate * -1);
-
-        _camera.Reset();
-
+        _level.NextLevel();
         _congratulationWindow.SetActive(false);
-
-        Time.timeScale = 1;
-
-        _currentLevel = nextLevel;
     }
 }

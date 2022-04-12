@@ -4,16 +4,16 @@ namespace Influences
 {
     public class InverterInfluence : MonoBehaviour
     {
-        [SerializeField] private NutInit _nut;
+        [SerializeField] private Movement _movement;
 
         private void OnTriggerEnter(Collider other)
         {
-            _nut.InertRotation.InvertDirection();
+            _movement.InvertDirection();
         }
 
         private void OnTriggerExit(Collider other)
         {
-            _nut.InertRotation.InvertDirection();
+            _movement.InvertDirection();
         }
     }
 }

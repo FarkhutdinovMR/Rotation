@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Attacker : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     [SerializeField] private NutSettings _nutSettings;
     [SerializeField] private NutInit _nut;

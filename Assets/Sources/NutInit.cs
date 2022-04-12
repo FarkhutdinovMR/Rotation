@@ -10,31 +10,31 @@ public class NutInit : MonoBehaviour
     private NutInputRouter _input;
     private Transformable _transformable;
     private TransformablePresenter _presenter;
-    private InertRotation _inertRotation;
+    private Inertia _inertRotation;
 
     public Transformable Transformable => _transformable;
 
     public NutInputRouter Input => _input;
 
-    public InertRotation InertRotation => _inertRotation;
+    public Inertia InertRotation => _inertRotation;
 
     public TransformablePresenter Presenter => _presenter;
 
     private void Awake()
     {
-        _transformable = new Transformable(_nutSettings);
-        _inertRotation = new InertRotation(_nutSettings);
-        _input = new NutInputRouter(_inertRotation, _nutSettings);
+        Init();
+    }
+
+    public void Init()
+    {
+        if (_input != null)
+            _input.OnDisable();
+
+        _transformable = new Transformable();
+        _inertRotation = new Inertia(_nutSettings);
+        _input = new NutInputRouter();
         _presenter = new TransformablePresenter(_transformable, _view);
-    }
 
-    private void OnEnable()
-    {
         _input.OnEnable();
-    }
-
-    private void OnDisable()
-    {
-        _input.OnDisable();
     }
 }

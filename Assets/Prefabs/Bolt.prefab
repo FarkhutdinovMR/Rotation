@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6908103984862898318}
   - component: {fileID: 4228662129526137025}
   - component: {fileID: 543207277}
+  - component: {fileID: 1709890965619080327}
   m_Layer: 7
   m_Name: Bolt
   m_TagString: Untagged
@@ -110,3 +111,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587a54f63f224bf418797f3a3facc055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1709890965619080327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4962544066057800027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72227ef29ff2d24468080d2dcd3e3069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nutSettings: {fileID: 11400000, guid: 6d338cf02cb660643b66c745c3453469, type: 2}
+  _nut: {fileID: 0}
+  _boltCast: {fileID: 0}

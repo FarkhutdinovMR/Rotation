@@ -11,7 +11,11 @@ namespace Influences
         private void OnTriggerStay(Collider other)
         {
             if (_boltCast.IsCollision == false)
-                _nut.InertRotation.Accelerate(_nutSettings.Gravity);
+            {
+                float time = _nut.InertRotation.Acceleration / _nutSettings.MaxAcceleration;
+                float evalution = _nutSettings.Gravity.Evaluate(time);
+                _nut.InertRotation.Accelerate(evalution);
+            }
         }
     }
 }

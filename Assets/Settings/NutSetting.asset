@@ -12,10 +12,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2471d883e712f5d458e868669f38dbbd, type: 3}
   m_Name: NutSetting
   m_EditorClassIdentifier: 
-  <MaxAngularSpeed>k__BackingField: 700
-  <RotateScale>k__BackingField: 8
+  <MaxAcceleration>k__BackingField: 700
+  <RotateScale>k__BackingField: 1
   <MovePerRotate>k__BackingField: 0.003
   <Damage>k__BackingField: 1
   <Friction>k__BackingField: 5
-  <Gravity>k__BackingField: -4
+  <Gravity>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: -30
+      inSlope: 2.2497554
+      outSlope: 2.2497554
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0
+      value: -15.329759
+      inSlope: 46.424576
+      outSlope: 46.424576
+      tangentMode: 0
+      weightedMode: 3
+      inWeight: 0.36273685
+      outWeight: 0.32523853
+    - serializedVersion: 3
+      time: 1
+      value: -5
+      inSlope: 10.329759
+      outSlope: 10.329759
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   <Wind>k__BackingField: 10

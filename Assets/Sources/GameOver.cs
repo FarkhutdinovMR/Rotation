@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
@@ -6,6 +7,18 @@ public class GameOver : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField] private float _yOffset;
     [SerializeField] private GameObject _gameOverWindow;
+    [SerializeField] private Button _restartButton;
+    [SerializeField] private Levels _level;
+
+    private void OnEnable()
+    {
+        _restartButton.onClick.AddListener(RestartLevel);
+    }
+
+    private void OnDisable()
+    {
+        _restartButton.onClick.RemoveListener(RestartLevel);
+    }
 
     private void Update()
     {
@@ -24,5 +37,11 @@ public class GameOver : MonoBehaviour
 
         if (position.y < 0)
             EndGame();
+    }
+
+    private void RestartLevel()
+    {
+        _level.RestartLevel();
+        _gameOverWindow.SetActive(false);
     }
 }

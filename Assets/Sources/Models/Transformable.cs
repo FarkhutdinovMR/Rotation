@@ -2,17 +2,17 @@ namespace Models
 {
     public class Transformable
     {
-        private readonly NutSettings _nutSettings;
+        private float _position;
         private float _rotation;
 
-        public Transformable(NutSettings nutSettings)
-        {
-            _nutSettings = nutSettings;
-        }
+        public float Position => _position;
 
         public float Rotation => _rotation;
 
-        public float Position => _rotation * _nutSettings.MovePerRotate;
+        public void Translate(float translation)
+        {
+            _position += translation;
+        }
 
         public void Rotate(float angle)
         {
